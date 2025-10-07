@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@nx-navtor/emissions": ["libs/emissions/src/index.ts"],
+      "@nx-navtor/ui": ["libs/ui/src/index.ts"],
+      "@nx-navtor/vessels": ["libs/vessels/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
