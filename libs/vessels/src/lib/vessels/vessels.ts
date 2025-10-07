@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular'; // Angular Data Grid Component
 import type { ColDef } from 'ag-grid-community'; // Column Definition Type Interface
-import 'ag-grid-community/styles/ag-grid.css';
-import 'ag-grid-community/styles/ag-theme-alpine.css';
+import { VesselsService } from '../services/vessels';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { Vessel } from '../models/vessel.model';
+import { themeQuartz } from 'ag-grid-community';
 
 @Component({
   selector: 'lib-vessels',
@@ -11,17 +13,37 @@ import 'ag-grid-community/styles/ag-theme-alpine.css';
   styleUrl: './vessels.css',
 })
 export class Vessels {
-  rowData = [
-    { make: 'Tesla', model: 'Model Y', price: 64950, electric: true },
-    { make: 'Ford', model: 'F-Series', price: 33850, electric: false },
-    { make: 'Toyota', model: 'Corolla', price: 29600, electric: false },
-  ];
+  private vesselsService = inject(VesselsService);
 
-  // Column Definitions: Defines the columns to be displayed.
-  colDefs: ColDef[] = [
-    { field: 'make' },
-    { field: 'model' },
-    { field: 'price' },
-    { field: 'electric' },
+  public theme = themeQuartz
+    .withParams(
+      {
+        backgroundColor: 'black',
+        foregroundColor: '#361008CC',
+        browserColorScheme: 'light',
+      },
+      'light-red'
+    )
+    .withParams(
+      {
+        backgroundColor: '#201008',
+        foregroundColor: '#FFFFFFCC',
+        browserColorScheme: 'dark',
+      },
+      'dark-red'
+    );
+
+  // Signal to store data declaratively
+  readonly vessels = toSignal(this.vesselsService.getVessels(), {
+    initialValue: [] as Vessel[],
+  });
+
+  // Column definitions
+  readonly columnDefs: ColDef<Vessel>[] = [
+    { field: 'name', headerName: 'Name', sortable: true, filter: true },
+    { field: 'mmsi', headerName: 'MMSI', sortable: true },
+    { field: 'imo', headerName: 'IMO', sortable: true },
+    { field: 'companyName', headerName: 'Company', sortable: true },
+    { field: 'vesselType', headerName: 'Type', sortable: true },
   ];
 }
