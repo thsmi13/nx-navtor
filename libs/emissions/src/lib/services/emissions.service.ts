@@ -8,10 +8,10 @@ import { IEmissions } from '../models/emissions.model';
 })
 export class EmissionsService {
   private readonly http = inject(HttpClient);
+  private apiUrl =
+    'https://frontendteamfiles.blob.core.windows.net/exercises/emissions.json';
 
   getEmissions(): Observable<IEmissions[]> {
-    return this.http.get<IEmissions[]>(
-      'https://frontendteamfiles.blob.core.windows.net/exercises/emissions.json'
-    );
+    return this.http.get<IEmissions[]>(this.apiUrl);
   }
 }

@@ -8,10 +8,10 @@ import { Vessel } from '../models/vessel.model';
 })
 export class VesselsService {
   private readonly http = inject(HttpClient);
+  private apiUrl =
+    'https://frontendteamfiles.blob.core.windows.net/exercises/vessels.json';
 
   getVessels(): Observable<Vessel[]> {
-    return this.http.get<Vessel[]>(
-      'https://frontendteamfiles.blob.core.windows.net/exercises/vessels.json'
-    );
+    return this.http.get<Vessel[]>(this.apiUrl);
   }
 }

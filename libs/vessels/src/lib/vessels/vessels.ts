@@ -10,7 +10,7 @@ import { themeQuartz } from 'ag-grid-community';
   selector: 'lib-vessels',
   imports: [AgGridAngular],
   templateUrl: './vessels.html',
-  styleUrl: './vessels.css',
+  styleUrl: './vessels.scss',
 })
 export class Vessels {
   private vesselsService = inject(VesselsService);
@@ -18,23 +18,11 @@ export class Vessels {
     initialValue: [] as Vessel[],
   });
 
-  public theme = themeQuartz
-    .withParams(
-      {
-        backgroundColor: 'black',
-        foregroundColor: '#361008CC',
-        browserColorScheme: 'light',
-      },
-      'light-red'
-    )
-    .withParams(
-      {
-        backgroundColor: '#201008',
-        foregroundColor: '#FFFFFFCC',
-        browserColorScheme: 'dark',
-      },
-      'dark-red'
-    );
+  public theme = themeQuartz.withParams({
+    backgroundColor: '#1e293b',
+    foregroundColor: '#fff',
+    browserColorScheme: 'dark',
+  });
 
   readonly columnDefs: ColDef<Vessel>[] = [
     { field: 'name', headerName: 'Name', sortable: true, filter: true },

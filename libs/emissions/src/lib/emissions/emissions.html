@@ -1,8 +1,18 @@
-<p>Emissions works!</p>
 <lib-dropdown
   [options]="vesselOptions()"
   optionLabel="name"
   optionValue="id"
   placeholder="Select a vessel"
-  [(selectedValue)]="selectedVesselId"
+  [selectedValue]="selectedVesselId()"
+  (selectionChange)="selectedVesselId.set($event)"
 ></lib-dropdown>
+
+@if (selectedVesselId() && selectedEmission()) {
+<div class="m-4">
+  <lib-time-series
+    title="{{ selectedVesselName() }} Emissions"
+    [series]="combinedChartData()"
+  ></lib-time-series>
+</div>
+
+}
