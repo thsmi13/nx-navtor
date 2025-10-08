@@ -1,1 +1,8 @@
 <p>Emissions works!</p>
+<lib-dropdown
+  [options]="vesselOptions()"
+  optionLabel="name"
+  optionValue="id"
+  placeholder="Select a vessel"
+  [(selectedValue)]="selectedVesselId"
+></lib-dropdown>

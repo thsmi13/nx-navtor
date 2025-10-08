@@ -14,6 +14,9 @@ import { themeQuartz } from 'ag-grid-community';
 })
 export class Vessels {
   private vesselsService = inject(VesselsService);
+  readonly vessels = toSignal(this.vesselsService.getVessels(), {
+    initialValue: [] as Vessel[],
+  });
 
   public theme = themeQuartz
     .withParams(
@@ -33,12 +36,6 @@ export class Vessels {
       'dark-red'
     );
 
-  // Signal to store data declaratively
-  readonly vessels = toSignal(this.vesselsService.getVessels(), {
-    initialValue: [] as Vessel[],
-  });
-
-  // Column definitions
   readonly columnDefs: ColDef<Vessel>[] = [
     { field: 'name', headerName: 'Name', sortable: true, filter: true },
     { field: 'mmsi', headerName: 'MMSI', sortable: true },

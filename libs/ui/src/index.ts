@@ -1,3 +1,2 @@
-export * from './lib/ui/ui';
-
-export * from './../menu/menu';
+export * from './lib/menu/menu';
+export * from './lib/dropdown/dropdown';

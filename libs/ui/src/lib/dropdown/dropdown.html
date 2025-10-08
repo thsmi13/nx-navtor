@@ -1,0 +1,12 @@
+<div class="card flex justify-center">
+  <p-select
+    [options]="options()"
+    [optionLabel]="optionLabel()"
+    [optionValue]="optionValue()"
+    [placeholder]="placeholder()"
+    [disabled]="disabled()"
+    [(ngModel)]="selectedValue"
+    (ngModelChange)="onSelectionChange($event)"
+    [style]="{'width': '100%'}"
+  />
+</div>
