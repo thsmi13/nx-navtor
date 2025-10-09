@@ -1,5 +1,5 @@
 import { Dropdown, TimeSeriesComponent } from '@nx-navtor/ui';
-import { Component, computed, inject, signal, Signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { EmissionsService } from '../services/emissions.service';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { IEmissions } from '../models/emissions.model';

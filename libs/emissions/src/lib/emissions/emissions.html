@@ -1,18 +1,22 @@
-<lib-dropdown
-  [options]="vesselOptions()"
-  optionLabel="name"
-  optionValue="id"
-  placeholder="Select a vessel"
-  [selectedValue]="selectedVesselId()"
-  (selectionChange)="selectedVesselId.set($event)"
-></lib-dropdown>
+<div class="h-full pb-4 border-slate-900 border-2 rounded-lg p-4 bg-slate-950">
+  <h1 class="text-xl mb-4">Emissions</h1>
 
-@if (selectedVesselId() && selectedEmission()) {
-<div class="m-4">
-  <lib-time-series
-    title="{{ selectedVesselName() }} Emissions"
-    [series]="combinedChartData()"
-  ></lib-time-series>
+  <lib-dropdown
+    [options]="vesselOptions()"
+    optionLabel="name"
+    optionValue="id"
+    placeholder="Select a vessel"
+    [selectedValue]="selectedVesselId()"
+    (selectionChange)="selectedVesselId.set($event)"
+  ></lib-dropdown>
+
+  @if (selectedVesselId() && selectedEmission()) {
+  <div class="m-4">
+    <lib-time-series
+      title="{{ selectedVesselName() }} Emissions"
+      [series]="combinedChartData()"
+    ></lib-time-series>
+  </div>
+
+  }
 </div>
-
-}

@@ -25,10 +25,16 @@ export class Vessels {
   });
 
   readonly columnDefs: ColDef<Vessel>[] = [
-    { field: 'name', headerName: 'Name', sortable: true, filter: true },
-    { field: 'mmsi', headerName: 'MMSI', sortable: true },
-    { field: 'imo', headerName: 'IMO', sortable: true },
-    { field: 'companyName', headerName: 'Company', sortable: true },
-    { field: 'vesselType', headerName: 'Type', sortable: true },
+    {
+      field: 'name',
+      headerName: 'Name',
+      sortable: true,
+      filter: true,
+      flex: 1,
+    },
+    { field: 'mmsi', headerName: 'MMSI', sortable: true, flex: 1 },
+    { field: 'imo', headerName: 'IMO', sortable: true, flex: 1 },
+    { field: 'companyName', headerName: 'Company', sortable: true, flex: 1 },
+    { field: 'vesselType', headerName: 'Type', sortable: true, flex: 1 },
   ];
 }
